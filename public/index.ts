@@ -5,7 +5,10 @@ const passwordInput = document.querySelector('.password') as HTMLInputElement;
 const githubBtn = document.querySelector('.githubBtn');
 const localBtn = document.querySelector('.localBtn');
 
-githubBtn?.addEventListener('click', async () => await fetch('http://localhost:3000/auth/github'));
+githubBtn?.addEventListener(
+  'click',
+  async () => (window.location.href = 'http://localhost:3000/auth/github'),
+);
 
 localBtn?.addEventListener('click', async () => {
   const username = nameInput.value;
