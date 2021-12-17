@@ -15,6 +15,7 @@ const userDB = [
     username: 'd',
     password: '4',
   },
+  { username: 'wonju-dev' },
 ];
 
 const getUser = (username: string) => userDB.find((user) => user.username === username);
