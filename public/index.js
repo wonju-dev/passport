@@ -35,10 +35,49 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
+var boardElement = document.querySelector('.board');
+var nameInput = document.querySelector('.username');
+var passwordInput = document.querySelector('.password');
 var githubBtn = document.querySelector('.githubBtn');
+var localBtn = document.querySelector('.localBtn');
 githubBtn === null || githubBtn === void 0 ? void 0 : githubBtn.addEventListener('click', function () { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
     switch (_a.label) {
         case 0: return [4 /*yield*/, fetch('http://localhost:3000/auth/github')];
         case 1: return [2 /*return*/, _a.sent()];
     }
 }); }); });
+localBtn === null || localBtn === void 0 ? void 0 : localBtn.addEventListener('click', function () { return __awaiter(_this, void 0, void 0, function () {
+    var username, password, response, msg, json;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                username = nameInput.value;
+                password = passwordInput.value;
+                return [4 /*yield*/, fetch('http://localhost:3000/auth/local', {
+                        method: 'POST',
+                        headers: {
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username: username,
+                            password: password
+                        })
+                    })];
+            case 1:
+                response = _a.sent();
+                msg = '';
+                if (!(response.status === 401)) return [3 /*break*/, 2];
+                msg = 'fail to authenticate!';
+                return [3 /*break*/, 4];
+            case 2: return [4 /*yield*/, response.json()];
+            case 3:
+                json = _a.sent();
+                msg = "hello " + json.username;
+                _a.label = 4;
+            case 4:
+                boardElement.value = msg;
+                return [2 /*return*/];
+        }
+    });
+}); });

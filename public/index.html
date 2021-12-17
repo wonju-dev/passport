@@ -7,12 +7,13 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="http://localhost:3000/auth/local" id='myForm' method="post">
-    <input type="input" placeholder="아이디"/>
-    <input type="password" placeholder="비밀번호"/>
-  </form>
-  <button form="myForm" type="submit">로컬 로그인</button>
+  <input class="username" type="input" placeholder="아이디"/>
+  <input class="password" type="password" placeholder="비밀번호"/>
+  <button class="localBtn">로컬 로그인</button>
+
   <button class="githubBtn">깃허브 로그인</button>
+
+  <textarea class='board'></textarea>
 
   <script type="text/javascript" src="index.js"></script>
 </body>
